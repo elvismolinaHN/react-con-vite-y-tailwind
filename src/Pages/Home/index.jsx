@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react' // con useState nos permite guardar 
 // Con useEffect nos permite hacer consumo de API
 import Layout from '../../Components/Layout'
 import Card from '../../Components/Card'
+import ProductDetail from '../../Components/ProductDetail'
 
 function Home() {
     const [items, setItems] = useState(null)// setItems nos ayuda a almacenar la informacion que se necesita y lo almacena en items.
@@ -22,6 +23,7 @@ function Home() {
               ))
             }
           </div>
+          <ProductDetail />
         </Layout>
       </>
     )
