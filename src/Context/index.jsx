@@ -7,7 +7,10 @@ export const ShoppingCartContext = createContext()
 // Provider encapsula los componentes que tengamos en App.
 export const ShoppingCartProvider = ({children}) => {
     const [count, setCount] = useState(0)
-    
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
+    const openProductDetail = () => setIsProductDetailOpen(true)
+    const closeProductDetail = () => setIsProductDetailOpen(true)
+
     ShoppingCartProvider.propTypes = {
         children: PropTypes.node.isRequired,
     }
@@ -15,7 +18,10 @@ export const ShoppingCartProvider = ({children}) => {
     return (
         <ShoppingCartContext.Provider value={{
             count,
-            setCount
+            setCount,
+            openProductDetail,
+            closeProductDetail,
+            isProductDetailOpen
         }}> 
             {children}
         </ShoppingCartContext.Provider>
