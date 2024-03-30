@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
-import { createContext } from 'react' // createContext define un estado global
-import { useState } from 'react'
+import { createContext, useState, useEffect } from 'react' // createContext define un estado global
+// con useState nos permite guardar la informacion
+// Con useEffect nos permite hacer consumo de API
 
 export const ShoppingCartContext = createContext()
 
@@ -28,6 +29,18 @@ export const ShoppingCartProvider = ({children}) => {
     // Shopping Cart . Order
     const [order, setOrder] = useState([])
 
+    // Get products
+    const [items, setItems] = useState(null) 
+
+    // Get products by title
+    const [searchByTitle, setSearchByTitle] = useState(null)
+
+    useEffect(() => {
+      fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(data => setItems(data))
+    }, [])
+
     ShoppingCartProvider.propTypes = {
         children: PropTypes.node.isRequired,
     }
@@ -47,7 +60,11 @@ export const ShoppingCartProvider = ({children}) => {
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
             order,
-            setOrder
+            setOrder,
+            items,
+            setItems,
+            searchByTitle,
+            setSearchByTitle
         }}> 
             {children}
         </ShoppingCartContext.Provider>
