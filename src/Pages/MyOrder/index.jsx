@@ -7,6 +7,9 @@ import OrderCard from '../../Components/OrderCard'
 
 function MyOrder() {
     const context = useContext(ShoppingCartContext)
+    const currentPath = window.location.pathname
+    let index = currentPath.substring(currentPath.lastIndexOf('/') + 1) // Agarra el ultimo elemento del path
+    if (index === 'last') index = context.order?.length - 1 // En vez de que busque por last, lo busca por el numero del id
 
     return (
         <>
@@ -19,19 +22,20 @@ function MyOrder() {
                 </div>
                 <div className='flex flex-col w-80'>
                     {
-                        context.order?.slice(-1)[0].products.map(product => ( // Muestra la ultima orden que se tomo, y como es un array se toma en la posicion 0.
+                        context.order?.[index]?.products.map(product => ( 
                             <OrderCard
                                 key={product.id}
                                 id={product.id}
                                 title={product.title}
                                 imageUrl={product.image}
-                                price={product.price} />
+                                price={product.price} 
+                            />
                         ))
                     }
                 </div>
             </Layout>
         </>
-      )
-  }
+    )
+}
   
 export default MyOrder
