@@ -8,24 +8,15 @@ function Home() {
     const context = useContext(ShoppingCartContext)
 
     const renderView = () => {
-        if (context.searchByTitle?.length > 0) { // Aqui se compara si se escribe algo o no.
-            if (context.filteredItems?.length > 0) { // Aqui se compara si existe un filtrado o no.
-                return (
-                    context.filteredItems?.map(item => ( 
-                        <Card key={item.id} data={item} /> 
-                    ))
-                )
-            } else {
-                return (
-                    <div>We dont have anything</div>
-                )
-            }
+        if (context.filteredItems?.length > 0) { // Aqui se compara si existe un filtrado o no.
+            return (
+                context.filteredItems?.map(item => ( 
+                    <Card key={item.id} data={item} /> 
+                ))
+            )
         } else {
             return (
-                // onChange captura el valor del input
-                context.items?.map(item => ( // Por cada elemento que esta en items se muestra una Card.
-                    <Card key={item.id} data={item} /> // data envia la informacion a la Card
-                ))
+                <div>We dont have anything</div>
             )
         }
     }

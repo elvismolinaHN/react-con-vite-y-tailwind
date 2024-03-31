@@ -27,12 +27,12 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to='/clothes'
-                        onClick={() => context.setSearchByCategory('clothes')}
+                        to='/mens-clothing'
+                        onClick={() => context.setSearchByCategory('men')}
                         className={({ isActive }) => 
                               isActive ? activeStyle : undefined
                           }>
-                        Clothes
+                        Mens clothing
                     </NavLink>
                 </li>
                 <li>
@@ -47,22 +47,22 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to='/furnitures'
-                        onClick={() => context.setSearchByCategory('furnitures')}
+                        to='/womens-clothing'
+                        onClick={() => context.setSearchByCategory('women')}
                         className={({ isActive }) => 
                               isActive ? activeStyle : undefined
                           }>
-                        Furnitures
+                        Womens clothing
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
-                        to='/toys'
-                        onClick={() => context.setSearchByCategory('toys')}
+                        to='/jewelery'
+                        onClick={() => context.setSearchByCategory('jewelery')}
                         className={({ isActive }) => 
                               isActive ? activeStyle : undefined
                           }>
-                        Toys
+                        Jewelery
                     </NavLink>
                 </li>
                 <li>
@@ -109,9 +109,7 @@ const Navbar = () => {
                 </li>
                 <li className='flex items-center'>
                     <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon> 
-                    <div>
-                        {context.count}
-                    </div>
+                    <div>{context.cartProducts.length}</div>
                 </li>
             </ul>
         </nav>

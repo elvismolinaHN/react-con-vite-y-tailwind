@@ -24,6 +24,7 @@ const CheckoutSideMenu = () => {
 
         context.setOrder([...context.order, orderToAdd]) // Agrega lo que tiene la orden anterior, mas la actual.
         context.setCartProducts([]) // Limpia las ordenes
+        context.setSearchByTitle(null) // Limpia la busqueda del input
     }
 
     return (
